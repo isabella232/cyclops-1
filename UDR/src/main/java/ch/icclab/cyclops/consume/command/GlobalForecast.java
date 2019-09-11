@@ -78,11 +78,13 @@ public class GlobalForecast extends Command {
                 for (String account : accounts) {
                     if (account.equals(usage.getAccount())) i++;
                 }
-                if (i == 0) {
+                if (i == 0 && !usage.getAccount().contains("forecast")) {
                     accounts.add(usage.getAccount());
                 }
             } else {
-                accounts.add(usage.getAccount());
+                if (!usage.getAccount().contains("forecast")) {
+                    accounts.add(usage.getAccount());
+                }
             }
         }
         return accounts;

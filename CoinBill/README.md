@@ -1,6 +1,7 @@
 <a href="http://icclab.github.io/cyclops" target="_blank"><img align="middle" src="http://icclab.github.io/cyclops/assets/images/logo_big.png"></img></a>
 
 ## Rule engine micro service
+
 This micro service (aka Coin) is a generic business rule system that is internally utilising <a href="http://drools.org" target="_blank">Drools</a>, an inference engine, for its rule execution. The micro service itself exposes template instantiation, as well as truth maintenance over RESTful APIs, and therefore allow developers to write their own business rules and provide graphical user interfaces for people from sales to work with.
 
 The most prominent features:
@@ -21,21 +22,21 @@ The most prominent features:
  - Stream processing
  - Alarm notifications
  - Batch processing
- - Easy debugging 
+ - Easy debugging
  - State recovery
 
 ### Logging
 To have the logging system enabled you need to run the following:
 
     ./scripts/logging.sh
-  
+
 Then all Rule engine service logs will be stored in <code>/var/log/cyclops/coin/</code> directory.
 
 ### Run the JAR file
 In order to run Rule ngine micro service as embedded JAR you need to have Java 8 installed and execute:
 
     java -jar bin/coin.jar config/coin.conf [port]
-  
+
 If you don't want to use the default port from configuration file, you can optionally specify one by adding it as parameter.
 
 ### Compile from the source code
@@ -43,7 +44,7 @@ If you want to compile the code on your own and your environment already has Jav
 
     cd scripts
     ./compile.sh
-  
+
 You will find the compiled JAR embedded file in the <code>bin</code> subdirectory.
 
 ### Scripting
@@ -62,13 +63,13 @@ If you decide to automate deployment of the Rule engine micro service, please no
 For API reference guide, as well as documentation please consult <code>documentation</code> folder.
 
 ### License
- 
+
       Licensed under the Apache License, Version 2.0 (the "License"); you may
       not use this file except in compliance with the License. You may obtain
       a copy of the License at
- 
+
            http://www.apache.org/licenses/LICENSE-2.0
- 
+
       Unless required by applicable law or agreed to in writing, software
       distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
       WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
