@@ -34,6 +34,8 @@ Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(VueGoogleCharts);
 Vue.prototype.$axios = axios
+// Change this to the IP of the server
+Vue.prototype.$backend = 'http://127.0.0.1:5000/'
 
 
 /* eslint-disable no-new */

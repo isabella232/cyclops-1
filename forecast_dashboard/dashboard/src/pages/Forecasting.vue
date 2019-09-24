@@ -202,7 +202,7 @@ methods:{
         ]
 
     this.$axios
-        .get('http://127.0.0.1:5000/bills')
+        .get(this.$backend + 'bills')
         .then(response => {
           this.info = response.data.data;
           //var tmp = [];

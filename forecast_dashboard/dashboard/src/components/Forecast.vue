@@ -86,7 +86,7 @@ export default {
   },
   mounted(){
     this.$axios
-      .get('http://127.0.0.1:5000/accounts')
+      .get(this.$backend + 'accounts')
       .then(response => {
         this.accounts = response.data;
           for (var option in this.accounts){
@@ -105,7 +105,7 @@ export default {
           "size": this.size
         }
         this.$axios
-          .post('http://127.0.0.1:5000/singleforecast',this.data)
+          .post(this.$backend + 'singleforecast',this.data)
           .then(response => {
             this.info = response.data;
             for (var key in this.info){
@@ -120,7 +120,7 @@ export default {
           "size": this.size
         }
         this.$axios
-          .post('http://127.0.0.1:5000/globalforecast',this.data)
+          .post(this.$backend + 'globalforecast',this.data)
           .then(response => {
             this.info = response.data;
             for (var key in this.info){
@@ -135,7 +135,7 @@ export default {
           "size": this.size
         }
         this.$axios
-          .post('http://127.0.0.1:5000/patternforecast',this.data)
+          .post(this.$backend + 'patternforecast',this.data)
           .then(response => {
             this.info = response.data;
             for (var key in this.info){

@@ -102,7 +102,7 @@ export default {
       this.data.target = target
       this.data.rule = rule
       this.$axios
-        .post('http://127.0.0.1:5000/removerule',this.data)
+        .post(this.$backend + 'removerule',this.data)
         .then(response => {
           this.info = response.data;
           this.$root.$emit('list');
@@ -112,7 +112,7 @@ export default {
       this.cdrrules = []
       this.billrules = []
       this.$axios
-        .get('http://127.0.0.1:5000/listcdrrules')
+        .get(this.$backend + 'listcdrrules')
         .then(response => {
           this.info = response.data;
           for (var key in this.info){
@@ -120,7 +120,7 @@ export default {
           }
         })
       this.$axios
-        .get('http://127.0.0.1:5000/listbillrules')
+        .get(this.$backend + 'listbillrules')
         .then(response => {
           this.info = response.data;
           for (var key in this.info){

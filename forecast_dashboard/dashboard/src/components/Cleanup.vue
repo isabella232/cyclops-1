@@ -98,7 +98,7 @@ export default {
         this.data.target = this.target
         this.data.rules = this.rules
         this.$axios
-          .post('http://127.0.0.1:5000/cleanup',this.data)
+          .post(this.$backend + 'cleanup',this.data)
           .then(response => {
             this.info = response.data
             this.records.push({type:"Bill",count:this.info.bills})

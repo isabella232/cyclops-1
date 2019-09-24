@@ -74,7 +74,7 @@ export default {
       this.data.target = this.target
       this.data.rule = this.rule
       this.$axios
-        .post('http://127.0.0.1:5000/removerule',this.data)
+        .post(this.$backend + 'removerule',this.data)
         .then(response => {
           this.info = response.data;
           this.$root.$emit('list');
