@@ -4,25 +4,25 @@
 ############ Cyclops USER ############
 ######################################
 psql -U postgres -h localhost <<EOF
-CREATE USER username WITH PASSWORD 'password';
+CREATE USER cyclops WITH PASSWORD 'pass1234';
 EOF
 
 ######################################
 ############ Cyclops DBs #############
 ######################################
 psql -U postgres -h localhost <<EOF
-CREATE DATABASE cyclops_udr WITH OWNER username;
-CREATE DATABASE cyclops_cdr WITH OWNER username;
-CREATE DATABASE cyclops_billing WITH OWNER username;
-GRANT ALL PRIVILEGES ON DATABASE cyclops_udr TO username;
-GRANT ALL PRIVILEGES ON DATABASE cyclops_cdr TO username;
-GRANT ALL PRIVILEGES ON DATABASE cyclops_billing TO username;
+CREATE DATABASE cyclops_udr WITH OWNER cyclops;
+CREATE DATABASE cyclops_cdr WITH OWNER cyclops;
+CREATE DATABASE cyclops_billing WITH OWNER cyclops;
+GRANT ALL PRIVILEGES ON DATABASE cyclops_udr TO cyclops;
+GRANT ALL PRIVILEGES ON DATABASE cyclops_cdr TO cyclops;
+GRANT ALL PRIVILEGES ON DATABASE cyclops_billing TO cyclops;
 EOF
 
 ######################################
 ############ Cyclops UDR #############
 ######################################
-psql -U username -h localhost -d cyclops_udr <<EOF
+psql -U cyclops -h localhost -d cyclops_udr <<EOF
 CREATE TABLE IF NOT EXISTS usage (
   time      TIMESTAMP         NOT NULL,
   metric    TEXT              NOT NULL,
@@ -37,7 +37,7 @@ CREATE INDEX IF NOT EXISTS usage_unit ON usage (unit, time DESC);
 CREATE INDEX IF NOT EXISTS usage_data ON usage USING HASH (data);
 EOF
 
-psql -U username -h localhost -d cyclops_udr <<EOF
+psql -U cyclops -h localhost -d cyclops_udr <<EOF
 CREATE TABLE IF NOT EXISTS udr (
   time_from TIMESTAMP         NOT NULL,
   time_to   TIMESTAMP         NOT NULL,
@@ -56,7 +56,7 @@ EOF
 ######################################
 ############ Cyclops CDR #############
 ######################################
-psql -U username -h localhost -d cyclops_cdr <<EOF
+psql -U cyclops -h localhost -d cyclops_cdr <<EOF
 CREATE TABLE IF NOT EXISTS cdr (
   time_from TIMESTAMP         NOT NULL,
   time_to   TIMESTAMP         NOT NULL,
@@ -75,7 +75,7 @@ EOF
 ######################################
 ########## Cyclops Billing ###########
 ######################################
-psql -U username -h localhost -d cyclops_billing <<EOF
+psql -U cyclops -h localhost -d cyclops_billing <<EOF
 CREATE TABLE IF NOT EXISTS billrun (
   id        SERIAL            primary key,
   time      TIMESTAMP         NOT NULL,

@@ -90,7 +90,7 @@ while : ; do
     curl -u "guest:guest" -H "content-type:application/json" -XPUT -d '{"durable":true}' http://localhost:15672/api/queues/%2F/cyclops.billing.commands >/dev/null 2>&1
 
     echo "Declaring binding between cyclops.udr.dispatch and cyclops.billing.commands with routing key Billing on localhost:15672 ... "
-    curl -u "guest:guest" -H "content-type:application/json" -XPOST -d '{\"routing_key\":\"Billing\"}' http://localhost:15672/api/bindings/%2F/e/cyclops.udr.dispatch/q/cyclops.billing.commands	>/dev/null 2>&1
+    curl -u "guest:guest" -H "content-type:application/json" -XPOST -d '{"routing_key":"Billing"}' http://localhost:15672/api/bindings/%2F/e/cyclops.udr.dispatch/q/cyclops.billing.commands	>/dev/null 2>&1
 
     echo "Declaring cyclops.coinbill.broadcast exchange on localhost:15672 ... "
     curl -u "guest:guest" -H "content-type:application/json" -XPUT -d '{"type":"fanout", "durable":true}' http://localhost:15672/api/exchanges/%2F/cyclops.coinbill.broadcast >/dev/null 2>&1
